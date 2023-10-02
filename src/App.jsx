@@ -1,95 +1,60 @@
 import "./App.css";
-import Pricecart from "./Components/Pricecart";
 
-function App() {
-  const data = [
-    {
-      plan: "FREE",
-      price: "$0",
-      user: "Single User",
-      highlight: false,
-      userEnabler: true,
-      storage: "5GB Storage",
-      storageEnabler: true,
-      publicProjects: "Unlimited Public Projects",
-      publicProjectsEnabler: true,
-      communityAccess: "Community Access",
-      communityAccessEnabler: true,
-      privateProjects: "Unlimited Private Projects",
-      privateProjectsEnabler: false,
-      phoneSupport: "Dedicated Phone Support",
-      phoneSupportEnabler: false,
-      subDomain: "Free Subdomain",
-      subDomainEnabler: false,
-      subDomainHighlight: false,
-      statusPlan: "Monthly Status Reports",
-      statusPlanEnabler: false,
-    },
-    {
-      plan: "PLUS",
-      price: "$9",
-      user: "5 User",
-      highlight: true,
-      userEnabler: true,
-      storage: "50GB Storage",
-      storageEnabler: true,
-      publicProjects: "Unlimited Public Projects",
-      publicProjectsEnabler: true,
-      communityAccess: "Community Access",
-      communityAccessEnabler: true,
-      privateProjects: "Unlimited Private Projects",
-      privateProjectsEnabler: true,
-      phoneSupport: "Dedicated Phone Support",
-      phoneSupportEnabler: true,
-      subDomain: "Free Subdomain",
-      subDomainEnabler: true,
-      subDomainHighlight: false,
-      statusPlan: "Monthly Status Reports",
-      statusPlanEnabler: false,
-    },
-    {
-      plan: "PRO",
-      price: "$49",
-      user: "Unlimited User",
-      highlight: true,
-      userEnabler: true,
-      storage: "150GB Storage",
-      storageEnabler: true,
-      publicProjects: "Unlimited Public Projects",
-      publicProjectsEnabler: true,
-      communityAccess: "Community Access",
-      communityAccessEnabler: true,
-      privateProjects: "Unlimited Private Projects",
-      privateProjectsEnabler: true,
-      phoneSupport: "Dedicated Phone Support",
-      phoneSupportEnabler: true,
-      subDomain: "Unlimited Free Subdomain",
-      subDomainEnabler: true,
-      subDomainHighlight: true,
-      statusPlan: "Monthly Status Reports",
-      statusPlanEnabler: true,
-    },
-  ];
+export default function App() {
   return (
-    <>
-      <section className="pricing py-5">
-        <div className="container">
-          <div className="row">
-          {/* Approach1  */}
-            {/* <Pricecart value={data[0]} />
-            <Pricecart value={data[1]} />
-            <Pricecart value={data[2]} /> */}
-
-          {/* Approach2 */}
-
-            {data.map((e, i) => {
-              return <Pricecart value={e} key={i} />;
-            })}
-          </div>
-        </div>
-      </section>
-    </>
+    <div className="App"> 
+    <PricingCards />
+    </div>
   );
 }
 
-export default App;
+
+function PricingCards(){
+  const cardslist=[{
+    "main":"FREE",
+    "price":"$0/month",
+    'Number_of_user':"Single User",
+    "storage":"5GB Storage",
+    "Access":"Community Access",
+    "subdomin":"No Free Subdomain"
+},
+{
+    "main":"PLUS",
+    "price":"$9/month",
+    "Number_of_user":"5 User",
+    "storage":"50GB Storage",
+    "Access":"Community Access",
+   "subdomin":"Free Subdomain"      
+},
+{
+ "main":"PRO",
+ "price":"$49/month",
+ "Number_of_user":"Unlimited Users",
+ "storage":"150GB Storage",
+ "Access":"Community Access",
+ "subdomin":"Unlimited Free Subdomain"      
+}
+];
+  return(
+    <div className="toalign">
+      {cardslist.map((mv)=>(
+      <Pricing cards={mv} />
+      ))}
+    </div>
+  );
+}
+
+
+function Pricing({cards}){
+  return(
+      <div className="Card">
+        <p>{cards.main}</p>
+        <h1>{cards.price}</h1>
+        <p>{cards.Number_of_user}</p>
+        <p>{cards.storage}</p>
+        <p>{cards.subdomin}</p>
+        <p>{cards.Access}</p>
+        <button className='button'>Buy Now</button>
+        </div>
+  );
+}
